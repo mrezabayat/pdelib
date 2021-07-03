@@ -9,8 +9,11 @@ using std::vector;
 
 namespace pdelib
 {
+    /// \brief A class to define a point
     class point
     {
+    private:
+        double _x, _y, _z;
     public:
         /// \brief Constructor: Setting all coordinates of the point to zero when constructed
         point() :_x(0), _y(0), _z(0) {}
@@ -43,7 +46,19 @@ namespace pdelib
 
         /// \brief Get the x,y, and z coordinates of the point in a vector.
         vector<double> getCoordinates() { return { _x, _y, _z }; }
+    };
+
+    /// \brief A class to define a line
+    class line
+    {
+    public:
+        /// \brief Constractors
+        line() {}
+        line(const point& p0, const point& p1) : _startPt(p0), _endPt(p1) {}
+
+        point getStartPoint() {return _startPt;}
+        point getEndPoint() {return _endPt;}
     private:
-        double _x, _y, _z;
+        point _startPt, _endPt;
     };
 } // namespace pdelib
